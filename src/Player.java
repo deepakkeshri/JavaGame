@@ -30,6 +30,13 @@ public class Player extends GameObject{
 					AudioPlayer.getSound("collision").play();
 				}
 			}
+			else if(tempObject.getId() == ID.Life){
+				if(getBounds().intersects(tempObject.getBounds())){
+					HUD.health += 2;
+					AudioPlayer.getSound("life").play();
+					handler.removeObject(tempObject);
+				}
+			}
 		}
 	}
 

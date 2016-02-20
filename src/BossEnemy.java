@@ -7,6 +7,7 @@ public class BossEnemy extends GameObject{
 	
 	Handler handler;
 	Random ran = new Random();
+	GameObject player;
 	
 	private int timer = 40;
 	private int timer2 = 20;
@@ -38,13 +39,19 @@ public class BossEnemy extends GameObject{
 			velx = Game.clamp(velx, -10, 10);
 			int spawn = ran.nextInt(20);
 			if(spawn == 5) handler.addObject(new BossBullet((int)x+32, (int)y+32,ID.BasicEnemy,handler));
+			//if(spawn2 == 5) handler.addObject(new SmartEnemy((int)x+32, (int)y+32,ID.SmartEnemy,handler));
 		}
 		
 		x += velx; 
 		y += vely;
 		if(x <= 0 || x > Game.WIDTH-64) velx *= -1; 
 		//if(y <= 0 || y > Game.HEIGHT-64) vely *= -1; 
-		//handler.addObject(new Trail(x,y,ID.Trail,Color.red,64,64,0.01f,handler));
+		for(int i=0;i<handler.objects.size();i++)
+			if(handler.objects.get(i).getId() == ID.Player)
+				player = handler.objects.get(i);
+		if(player.getY() < y){
+			y -= 10;
+		}
 	}
 
 	@Override

@@ -64,7 +64,7 @@ public class Game extends Canvas implements Runnable{
 	public synchronized void stop(){
 		try {
 			thread.join();
-			running = true;
+			running = false;
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

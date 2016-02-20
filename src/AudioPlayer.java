@@ -10,7 +10,7 @@ public class AudioPlayer {
 	private static Map<String,Music> musicMap = new HashMap<String,Music>();
 	private static Map<String,Sound> soundMap = new HashMap<String,Sound>();
 	
-	public static void load(){
+	public static void load() {
 		try {
 			musicMap.put("music", new Music( "/res/background_music.ogg"));
 		} catch (SlickException e) {
@@ -34,6 +34,13 @@ public class AudioPlayer {
 		
 		try {
 			soundMap.put("boss", new Sound("/res/boss.ogg"));
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			soundMap.put("life", new Sound("/res/life.ogg"));
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
